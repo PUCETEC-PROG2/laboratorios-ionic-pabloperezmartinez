@@ -1,5 +1,6 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import RepoItem from '../components/RepoItem';
+import { repositoryList } from '../interfaces/Repository';
 import './Tab1.css';
 
 const Tab1: React.FC = () => {
@@ -7,16 +8,22 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Repositorios</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size="large">Repositorios</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        
+        <IonList>
+          {repositoryList.map((repo) => (
+            <RepoItem {...repo} />
+          ))}
+        </IonList>
+
       </IonContent>
     </IonPage>
   );
